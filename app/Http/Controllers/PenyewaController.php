@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Penyewa;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -8,17 +9,10 @@ use Illuminate\Http\Request;
 
 class PenyewaController extends Controller
 {
-    public function tampilData(string $id):View {
-
-        return view('penyewa.profile',[
-        'penyewa' => Penyewa::findOrFail($id)
-        ]);
-    }
-
     public function index(): View
     {
-       $penyewa = Penyewa::latest()->paginate(5);
-       return view('penyewa.index',compact('penyewa'));
+        $dataPenyewa = Penyewa::latest()->paginate(10);
+        return view('penyewa.index', compact('dataPenyewa'));
     }
 
     public function create(): View
@@ -28,67 +22,58 @@ class PenyewaController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-       
+
         //validate form
         $request->validate([
-            'id_penyewa'      => 'required|min:5|unique:penyewas,id_penyewa',
-            'nama_penyewa'    => 'required|min:5',
-            'alamat'          => 'required|min:5',
-            'no_hp'           => 'required|min:5|unique:penyewas,no_hp'
+            'nama_penyewa'    => 'required',
+            'alamat'          => 'required',
+            'no_hp'           => 'required'
         ]);
 
         Penyewa::create([
-            'id_penyewa'      => $request->id_penyewa,
             'nama_penyewa'    => $request->nama_penyewa,
-            'alamat'          => $request->alamat, 
+            'alamat'          => $request->alamat,
             'no_hp'           => $request->no_hp,
         ]);
         //redirect to index
-        return redirect()->route('customer.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('penyewa.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
-    public function show(string $id): View
+    public function edit($id_penyewa): View
     {
-        $customer = Penyewa::findOrFail($id);
-
-        return view('customer.show', compact('penyewa'));
+        $dataPenyewa = Penyewa::findOrFail($id_penyewa);
+        return view('penyewa.edit', compact('dataPenyewa'));
     }
 
-    public function edit(string $id): View
+    public function show($id_penyewa): View
     {
-        $customer = Penyewa::findOrFail($id);
+        $penyewa = Penyewa::findOrFail($id_penyewa);
 
-        return view('customer.edit', compact('penyewa'));
+        return view('penyewa.show', compact('penyewa'));
     }
-
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, $id_penyewa): RedirectResponse
     {
         //validate form
         $request->validate([
-            'id_penyewa'      => 'required|min:5',
-            'nama_penyewa'    => 'required|min:5',
-            'alamat'          => 'required|min:5',
-            'no_hp'           => 'required|min:5'
+            'nama_penyewa'    => 'required',
+            'alamat'          => 'required',
+            'no_hp'           => 'required'
         ]);
 
-        $customer = Penyewa::findOrFail($id);
-        $customer->update([
-                'id_penyewa'  => $request->id_penyewa,
-                'nama_penyewa'     => $request->nama_penyewa,
-                'alamat'  => md5($request->alamat),
-                'no_hp'     => $request->no_hp
-            ]);
+        $penyewa = Penyewa::findOrFail($id_penyewa);
+        $penyewa->update([
+            'nama_penyewa'     => $request->nama_penyewa,
+            'alamat'  => ($request->alamat),
+            'no_hp'     => $request->no_hp
+        ]);
 
-        return redirect()->route('customer.index')->with(['success' => 'Data Berhasil Diubah!']);
+        return redirect()->route('penyewa.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
-    public function destroy($id): RedirectResponse
+    public function destroy($id_penyewa): RedirectResponse
     {
-        $customer = Penyewa::findOrFail($id);
-        $customer->delete();
-        return redirect()->route('customer.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        $penyewa = Penyewa::findOrFail($id_penyewa);
+        $penyewa->delete();
+        return redirect()->route('penyewa.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
-
-     
-
 }
