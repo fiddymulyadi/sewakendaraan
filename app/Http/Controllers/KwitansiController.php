@@ -24,12 +24,10 @@ class KwitansiController extends Controller
 
         //validate form
         $request->validate([
-            'id_kwitansi'    => 'required',
             'tgl_kwitansi'          => 'required',
         ]);
 
         Kwitansi::create([
-            'id_kwitansi'    => $request->id_kwitansi,
             'tgl_kwitansi'          => $request->tgl_kwitansi,
         ]);
         //redirect to index
@@ -52,13 +50,12 @@ class KwitansiController extends Controller
     {
         //validate form
         $request->validate([
-            'id_kwitansi'    => 'required',
+           
             'tgl_kwitansi'          => 'required',
         ]);
 
         $kwitansi = Kwitansi::findOrFail($id_kwitansi);
         $kwitansi->update([
-            'id_kwitansi'     => $request->id_kwitansi,
             'tgl_kwitansi'  => ($request->tgl_kwitansi),
     
         ]);
