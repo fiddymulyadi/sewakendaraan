@@ -35,11 +35,11 @@
                                             {{ ++$index }}
                                         </td>
                                         <td>{{ $kwitansi->id_kwitansi }}</td>
-                                        <td>{{ $kwitansi->tanggal_kwitansi }}</td>
+                                        <td>{{ $kwitansi->tgl_kwitansi }}</td>
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('kwitansi.destroy', $kwitansi->id_kwitansi) }}" method="POST">
-                                                <a href="{{ route('kwitansi.show', $kwitansi->id_penyewa) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                                <a href="{{ route('kwitansi.edit', $kwitansi->id_penyewa) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                                <a href="{{ route('kwitansi.show', $kwitansi->id_kwitansi) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                                <a href="{{ route('kwitansi.edit', $kwitansi->id_kwitansi) }}" class="btn btn-sm btn-primary">EDIT</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
