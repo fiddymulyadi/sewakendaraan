@@ -39,7 +39,7 @@ return new class extends Migration
         });
 
         Schema::create('kwitansi', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_kwitansi');
             $table->date('tgl_kwitansi');
             $table->timestamps();
         });
