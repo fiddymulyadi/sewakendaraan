@@ -48,12 +48,12 @@
                                     </tr>
                                 @empty
                                     <div class="alert alert-danger">
-                                        Data User Belum Ada.
+                                        Data Kwitansi Belum Ada.
                                     </div>
                                 @endforelse
                             </tbody>
                         </table>
-                        {{-- {{ $penyewa->links() }} --}}
+                        {{-- {{ $kwitansi->links() }} --}}
                     </div>
                 </div>
             </div>
