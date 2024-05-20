@@ -18,27 +18,46 @@
                 </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <form action="{{ route('penyewa.update', $dataKelas->id) }}" method="POST">
+                        <form action="{{ route('penyewa.update', $dataPenyewa->id_penyewa) }}" method="POST">
                           @csrf
                           @method('PUT')
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Nama Penyewa</label>
+                            <input type="text" name="nama_penyewa" class="form-control" id="exampleInputEmail1" placeholder="Enter username" value="{{ old('nama_penyewa', $dataPenyewa->nama_penyewa) }}">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            @error('username')
+                            <div class="alert alert-danger mt-2">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                          </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">No Handphone</label>
+                          <input type="text" name="no_hp" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{ old('no_hp', $dataPenyewa->no_hp) }}">
+                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          @error('email')
+                          <div class="alert alert-danger mt-2">
+                              {{ $message }}
+                          </div>
+                          @enderror
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Alamat</label>
+                          <input type="text" name="alamat" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{ old('alamat', $dataPenyewa->alamat) }}">
+                          @error('password')
+                          <div class="alert alert-danger mt-2">
+                              {{ $message }}
+                          </div>
+                          @enderror
+                        </div>
+                            <br/>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Nama Kelas</label>
-                                <input type="text" name="nama_kelas" class="form-control" placeholder="Enter nama kelas" value="{{ old('nama_kelas', $dataKelas->nama_kelas) }}">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                @error('nama_kelas')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                              </div>
-                              <br/>
-                              <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                              </div>
+                              <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
                           </form>
            
                         
-                        {{-- {{ $user->links() }} --}}
+                        {{-- {{ $penyewa->links() }} --}}
                     </div>
                 </div>
             </div>
