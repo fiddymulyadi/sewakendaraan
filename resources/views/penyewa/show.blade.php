@@ -13,16 +13,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">Data Kelas</h3>
+                    <h3 class="text-center my-4">Data User</h3>
                     <hr>
                 </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <div class="card-body">
-                            <h3>{{ $penyewa->id_penyewa }}</h3>
-                            <h3>{{ $penyewa->nama_penyewa }}</h3>
-                            <h3>{{ $penyewa->alamat }}</h3>
-                            <h3>{{ $penyewa->no_hp }}</h3>
+                            <h3>ID : {{ $penyewa->id_penyewa }}</h3>
+                            <h3>Nama : {{ $penyewa->nama_penyewa }}</h3>
+                            <h3>Alamat : {{ $penyewa->alamat }}</h3>
+                            <h3>No Handphone :{{ $penyewa->no_hp }}</h3>
                          </div>
                     </div>
                 </div>
