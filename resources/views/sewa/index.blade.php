@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div>
-                    <h3 class="text-center my-4">Data Customer</h3>
+                    <h3 class="text-center my-4">Data Penyewaan</h3>
                     <hr>
                 </div>
                 <div class="card border-0 shadow-sm rounded">
@@ -31,14 +31,13 @@
                                     <th scope="col">Alamat Tujuan</th>
                                     <th scope="col">Biaya Sewa</th>
                                     <th scope="col">Kota</th>
-                                    <th scope="col">ID Customer</th>
+                                    <th scope="col">ID Penyewa</th>
                                     <th scope="col">Jlh Penumpang</th>
-                                    <th scope="col">ID Kwitansi</th>
                                     <th scope="col" style="width: 20%">ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($sewa as $index => $sewa)
+                                @forelse ($dataSewa as $index => $sewa)
                                     <tr>
                                         <td class="text-center">
                                             {{ ++$index }}
@@ -53,11 +52,10 @@
                                         <td>{{ $sewa->kota }}</td>
                                         <td>{{ $sewa->id_penyewa }}</td>
                                         <td>{{ $sewa->jlh_penumpang }}</td>
-                                        <td>{{ $sewa->id_kwitansi }}</td>
                                         <td class="text-center">
-                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="" method="POST">
-                                                <a href="" class="btn btn-sm btn-dark">SHOW</a>
-                                                <a href="" class="btn btn-sm btn-primary">EDIT</a>
+                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('sewa.destroy', $sewa->id_sewa) }}" method="POST">
+                                                <a href="{{ route('sewa.show', $sewa->id_sewa) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                                <a href="{{ route('sewa.edit', $sewa->id_sewa) }}" class="btn btn-sm btn-primary">EDIT</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
