@@ -29,10 +29,10 @@ return new class extends Migration
             $table->text('alamat_tujuan');
             $table->integer('biaya_sewa');
             $table->string('kota', 50)->default('Pontianak');
-            $table->unsignedBigInteger('id_penyewa')->default(1); // Foreign Key id_penyewa, default value: 1
+            $table->unsignedBigInteger('id_penyewa')->default(1);
             $table->foreign('id_penyewa')->references('id_penyewa')->on('penyewa');
             $table->integer('jlh_penumpang');
-            $table->unsignedBigInteger('id_kwitansi');
+            $table->unsignedBigInteger('id_kwitansi')->nullable();
             $table->timestamps();
             
         
