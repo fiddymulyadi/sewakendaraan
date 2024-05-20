@@ -18,7 +18,7 @@
                 </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <a href="{{ route('customer.create') }}" class="btn btn-md btn-info mb-3">TAMBAH</a>
+                        <a href="{{ route('penyewa.create') }}" class="btn btn-md btn-info mb-3">TAMBAH</a>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -31,19 +31,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($penyewa as $index => $customer)
+                                @forelse ($dataPenyewa as $index => $penyewa)
                                     <tr>
                                         <td class="text-center">
                                             {{ ++$index }}
                                         </td>
-                                        <td>{{ $customer->id_penyewa }}</td>
-                                        <td>{{ $customer->nama_penyewa }}</td>
-                                        <td>{{ $customer->alamat }}</td>
-                                        <td>{{ $customer->no_hp }}</td>
+                                        <td>{{ $penyewa->id_penyewa }}</td>
+                                        <td>{{ $penyewa->nama_penyewa }}</td>
+                                        <td>{{ $penyewa->alamat }}</td>
+                                        <td>{{ $penyewa->no_hp }}</td>
                                         <td class="text-center">
-                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="" method="POST">
-                                                <a href="" class="btn btn-sm btn-dark">SHOW</a>
-                                                <a href="" class="btn btn-sm btn-primary">EDIT</a>
+                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('penyewa.destroy', $penyewa->id_penyewa) }}" method="POST">
+                                                <a href="{{ route('penyewa.show', $penyewa->id_penyewa) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                                <a href="{{ route('penyewa.edit', $penyewa->id_penyewa) }}" class="btn btn-sm btn-primary">EDIT</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
