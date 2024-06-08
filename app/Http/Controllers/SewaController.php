@@ -16,7 +16,6 @@ class SewaController extends Controller
         $dataSewa = sewa::latest()->paginate(10);
         return view('sewa.index', compact('dataSewa'));
     }
-
    
 
     public function create(): View
