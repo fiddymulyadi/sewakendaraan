@@ -20,10 +20,10 @@
                     <div class="card-body">
                         <form action="{{ route('penyewa.store') }}" method="POST"  >
                             @csrf
-                    
+
                             <div class="form-group">
-                                <label for="namaCustomer">Nama Customer</label>
-                                <input type="text" name="nama_penyewa" class="form-control" id="namaCustomer" placeholder="Masukkan nama pengguna">
+                                <label for="namaCustomer">Nama</label>
+                                <input type="text" name="nama_penyewa" class="form-control" id="namaCustomer" placeholder="Masukkan nama Penyewa">
                                 @error('nama_penyewa')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
@@ -31,8 +31,8 @@
                                 @enderror
                               </div>
                               <div class="form-group">
-                                <label for="exampleInputPassword1">Alamat Customer</label>
-                                <input type="text" name="alamat" class="form-control" placeholder="Masukkan alamat pengguna">
+                                <label for="exampleInputPassword1">Alamat</label>
+                                <input type="text" name="alamat" class="form-control" placeholder="Masukkan alamat Penyewa">
                                 @error('alamat')
                                 <div class="alert alert-danger mt-2">
                                     {{ $message }}
@@ -53,8 +53,8 @@
                                   <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                           </form>
-           
-                        
+
+
                         {{-- {{ $customer->links() }} --}}
                     </div>
                 </div>

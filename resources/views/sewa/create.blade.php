@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <form action="{{ route('sewa.store') }}" method="POST"  >
                             @csrf
-                
+
                               <div class="form-group">
                                 <label for="exampleInputPassword1">Plat KB</label>
                                 <input type="text" name="no_pol" class="form-control" placeholder="Nomor Plat KB">
@@ -89,7 +89,7 @@
                                     <select class="form-select" name="id_penyewa" aria-label="Default select example">
                                         @foreach ($dataPenyewa as $penyewa)
                                         <option value="{{$penyewa->id_penyewa}}">{{$penyewa->nama_penyewa}}</option>
-                                           
+
                                        @endforeach
                                       </select>
                                      @error('id_penyewa')
@@ -121,8 +121,8 @@
                                   <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                           </form>
-           
-                        
+
+
                         {{-- {{ $customer->links() }} --}}
                     </div>
                 </div>
