@@ -1,81 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data User</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <style>
-        .table-container {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        .table thead th {
-            background-color: #007bff;
-            color: white;
-        }
-        .table tbody tr:nth-child(odd) {
-            background-color: #f8f9fa;
-        }
-        .table tbody tr:nth-child(even) {
-            background-color: #e9ecef;
-        }
-        .table tbody tr:hover {
-            background-color: #d1e7fd;
-        }
-        .table tbody tr td, .table tbody tr th {
-            transition: background-color 0.3s ease;
-        }
-    </style>
-</head>
-<body style="background: white">
+@extends('layouts.template')
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
-                                <i class="fas fa-home"></i>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/penyewa">
-                                <i class="fas fa-users"></i>
-                                Data penyewa
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa-solid fa-car-side"></i>
-                                Data Kendaraan
-                            </a>
-                        </li>
-                            <a class="nav-link" href="/sewa">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                Data Penyewaan
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+@section('content')
+<div class="section-header">
+    <h1>List Pelanggan</h1>
+    <div class="section-header-breadcrumb">
+      <div class="breadcrumb-item active"><a href="{{ url('') }}">Dashboard</a></div>
+      <div class="breadcrumb-item">List Pelanggan</div>
+    </div>
+  </div>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Data Customer</h1>
-                </div>
+  <div class="section-body">
+    <h2 class="section-title">List Pelanggan</h2>
+    <p class="section-lead">List Pelanggan</p>
 
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-md-12 bg-light rounded py-5" style="--bs-bg-opacity: .9;">
-                            <div class="card border-0 shadow-xl rounded">
-                                <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+                <div class="card border-0 shadow-sm rounded">
+                    <div class="card-body">
                                     <a href="{{ route('penyewa.create') }}" class="btn btn-primary btn-sm my-1">
                                         <i class="fas fa-plus"></i> Tambah
                                     </a>
@@ -100,12 +41,8 @@
                                                         <td>{{ $penyewa->alamat }}</td>
                                                         <td>{{ $penyewa->no_hp }}</td>
                                                         <td class="text-center">
-                                                            <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#viewModal{{ $penyewa->id_penyewa }}">
-                                                                <i class="fas fa-eye"></i> Lihat
-                                                            </button>
-                                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $penyewa->id_penyewa }}">
-                                                                <i class="fas fa-edit"></i> Edit
-                                                            </button>
+                                                            <a href="{{ route('penyewa.show',  $penyewa->id_penyewa) }}" class="btn btn-info btn-sm">Show</a>
+                                                            <a href="{{ route('penyewa.edit',  $penyewa->id_penyewa) }}" class="btn btn-warning btn-sm">Edit</a>
                                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('penyewa.destroy', $penyewa->id_penyewa) }}" method="POST" style="display:inline;">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -185,13 +122,10 @@
                                     {{-- {{ $penyewa->links() }} --}}
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            @endsection

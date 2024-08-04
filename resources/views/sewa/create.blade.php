@@ -1,35 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data User</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body style="background: white">
+@extends('layouts.template')
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div>
-                    <h3 class="text-center my-4">Tambah Sewa</h3>
-                    <hr>
-                </div>
+@section('content')
+<div class="section-header">
+    <h1>Sewa Kendaraan</h1>
+    <div class="section-header-breadcrumb">
+      <div class="breadcrumb-item active"><a href="{{ url('') }}">Dashboard</a></div>
+      <div class="breadcrumb-item">Sewa Kendaraan</div>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <h2 class="section-title">Sewa Kendaraan</h2>
+    <p class="section-lead">Sewa Kendaraan</p>
+
+    <div class="row">
+      <div class="col-12">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <form action="{{ route('sewa.store') }}" method="POST"  >
                             @csrf
 
-                              <div class="form-group">
-                                <label for="exampleInputPassword1">Plat KB</label>
-                                <input type="text" name="no_pol" class="form-control" placeholder="Nomor Plat KB">
-                                @error('no_pol')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
+                            <div class="mb-3">
+                                <label for="no_pol" class="section-title mt-0">No Pol:</label>
+                                <div class="form-group">
+                                    <select class="form-control" name="no_pol" id="no_pol">
+                                        @foreach ($kendaraan as $kendaraans)
+                                            <option value="{{$kendaraans->no_pol}}">{{$kendaraans->no_pol}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
+                                @error('no_pol')
+                                <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                              </div>
+                            </div>
                               <div class="form-group">
                                   <label for="exampleFormControlSelect1">Tanggal Sewa</label>
                                   <input type="date" name="tgl_sewa" class="form-control" placeholder="Tanggal Sewa Kendaraan">
@@ -50,7 +53,7 @@
                                   </div>
                                   <div class="form-group">
                                     <label for="exampleFormControlSelect1">Alamat Tujuan</label>
-                                    <input type="text" name="alamat_tujuan" class="form-control" placeholder="Telpon Tujuan">
+                                    <input type="text" name="alamat_tujuan" class="form-control" placeholder="Alamat Tujuan">
                                      @error('alamat_tujuan')
                                      <div class="alert alert-danger mt-2">
                                          {{ $message }}
@@ -77,40 +80,60 @@
                                   </div>
                                   <div class="form-group">
                                     <label for="exampleFormControlSelect1">Kota</label>
-                                    <input type="text" name="kota" class="form-control" placeholder="Masukkan No HP">
+                                    <input type="text" name="kota" class="form-control" placeholder="Masukkan Kota">
                                      @error('kota')
                                      <div class="alert alert-danger mt-2">
                                          {{ $message }}
                                      </div>
                                      @enderror
                                   </div>
-                                  <div class="form-group">
-                                    <label for="exampleFormControlSelect1">Penyewa</label>
-                                    <select class="form-select" name="id_penyewa" aria-label="Default select example">
-                                        @foreach ($dataPenyewa as $penyewa)
-                                        <option value="{{$penyewa->id_penyewa}}">{{$penyewa->nama_penyewa}}</option>
+                                  <div class="mb-3">
+                                    <label for="id_penyewa" class="section-title mt-0">Penyewa:</label>
+                                    <div class="form-group">
+                                        <select class="form-control" name="id_penyewa" id="id_penyewa">
+                                            @foreach ($dataPenyewa as $penyewa)
+                                                <option value="{{$penyewa->id_penyewa}}">{{$penyewa->nama_penyewa}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('id_penyewa')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
-                                       @endforeach
-                                      </select>
-                                     @error('id_penyewa')
-                                     <div class="alert alert-danger mt-2">
-                                         {{ $message }}
-                                     </div>
-                                     @enderror
-                                  </div>
+                                <div class="mb-3">
+                                    <label for="id_kwitansi" class="section-title mt-0">Kwitansi:</label>
+                                    <div class="form-group">
+                                        <select class="form-control" name="id_kwitansi" id="id_kwitansi">
+                                            @foreach ($kwitansi as $kwitansis)
+                                                <option value="{{$kwitansis->id_kwitansi}}">{{$kwitansis->tgl_kwitansi}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('id_kwitansi')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                
+                                <div class="mb-3">
+                                    <label for="id_invoice" class="section-title mt-0">No Kwitansi :</label>
+                                    <div class="form-group">
+                                        <select class="form-control" name="id_invoice" id="id_invoice">
+                                            @foreach ($invoice as $invoices)
+                                                <option value="{{$invoices->id_invoice}}">{{$invoices->id_invoice}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('id_invoice')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                 
                                   <div class="form-group">
                                     <label for="exampleFormControlSelect1">Jumlah Penumpang</label>
-                                    <input type="tel" name="jlh_penumpang" class="form-control" placeholder="Masukkan No HP">
+                                    <input type="tel" name="jlh_penumpang" class="form-control" placeholder="Masukkan Jumlah Penumpang">
                                      @error('no_hp')
-                                     <div class="alert alert-danger mt-2">
-                                         {{ $message }}
-                                     </div>
-                                     @enderror
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="exampleFormControlSelect1">ID Kwitansi</label>
-                                    <input type="text" name="id_kwitansi" class="form-control" placeholder="Nomor Bukti">
-                                     @error('id_kwitansi')
                                      <div class="alert alert-danger mt-2">
                                          {{ $message }}
                                      </div>
@@ -122,14 +145,13 @@
                                 </div>
                           </form>
 
-
-                        {{-- {{ $customer->links() }} --}}
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
-
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    @endsection
 

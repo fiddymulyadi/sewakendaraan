@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Data User</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body style="background: white">
+@extends('layouts.template')
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div>
-                    <h3 class="text-center my-4">Data Kwitansi</h3>
-                    <hr>
-                </div>
+@section('content')
+<div class="section-header">
+    <h1>List Pelanggan</h1>
+    <div class="section-header-breadcrumb">
+      <div class="breadcrumb-item active"><a href="{{ url('') }}">Dashboard</a></div>
+      <div class="breadcrumb-item">List Pelanggan</div>
+    </div>
+  </div>
+
+  <div class="section-body">
+    <h2 class="section-title">List Pelanggan</h2>
+    <p class="section-lead">List Pelanggan</p>
+
+    <div class="row">
+      <div class="col-12">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <a href="{{ route('kwitansi.create') }}" class="btn btn-md btn-info mb-3">TAMBAH</a>
@@ -38,7 +37,6 @@
                                         <td>{{ $kwitansi->tgl_kwitansi }}</td>
                                         <td class="text-center">
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('kwitansi.destroy', $kwitansi->id_kwitansi) }}" method="POST">
-                                                <a href="{{ route('kwitansi.show', $kwitansi->id_kwitansi) }}" class="btn btn-sm btn-dark">SHOW</a>
                                                 <a href="{{ route('kwitansi.edit', $kwitansi->id_kwitansi) }}" class="btn btn-sm btn-primary">EDIT</a>
                                                 @csrf
                                                 @method('DELETE')
@@ -56,8 +54,10 @@
                         {{-- {{ $kwitansi->links() }} --}}
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                @endsection
