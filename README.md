@@ -10,6 +10,8 @@ New Update:
 
 <p align="center"><a href="#" target="#"><img src="https://raw.githubusercontent.com/fiddymulyadi/sewakendaraan/main/Screenshot%202024-08-05%20013720.png" width="800" alt="Screenshot 3"></a></p>
 
+<p align="center"><a href="#" target="#"><img src="https://raw.githubusercontent.com/fiddymulyadi/sewakendaraan/main/Screenshot%202024-08-05%20014437.png" width="800" alt="Screenshot 4"></a></p>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
