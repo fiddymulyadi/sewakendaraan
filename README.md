@@ -1,9 +1,14 @@
 ## Aplikasi Sewa Kendaraan
-<p align="center"><a href="#" target="#"><img src="https://raw.githubusercontent.com/fiddymulyadi/sewakendaraan/main/Screenshot%202024-05-20%20091740.png" width="800" alt="Screenshot 1"></a></p>
 
-<p align="center"><a href="#" target="#"><img src="https://raw.githubusercontent.com/fiddymulyadi/sewakendaraan/main/Screenshot%202024-05-20%20084500.png" width="800" alt="Screenshot 1"></a></p>
+New Update:
+- Penambahan Form Login (Login Level Adminsitrator & Admin Transaksi)
+- Penambahan Template (Stisla Theme)
+ 
+<p align="center"><a href="#" target="#"><img src="https://raw.githubusercontent.com/fiddymulyadi/sewakendaraan/main/Screenshot%202024-08-05%20012115.jpg" width="800" alt="Screenshot 1"></a></p>
 
-<p align="center"><a href="#" target="#"><img src="https://raw.githubusercontent.com/fiddymulyadi/sewakendaraan/main/Screenshot%202024-05-20%20090315.png" width="800" alt="Screenshot 1"></a></p>
+<p align="center"><a href="#" target="#"><img src="https://raw.githubusercontent.com/fiddymulyadi/sewakendaraan/main/Screenshot%202024-08-05%20012738.png" width="800" alt="Screenshot 2"></a></p>
+
+<p align="center"><a href="#" target="#"><img src="https://raw.githubusercontent.com/fiddymulyadi/sewakendaraan/main/Screenshot%202024-08-05%20013720.png" width="800" alt="Screenshot 3"></a></p>
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
