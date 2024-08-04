@@ -23,5 +23,6 @@ class sewa extends Model
         'id_penyewa',
         'jlh_penumpang',
         'id_kwitansi',
+        'id_invoice',
     ];
 }
