@@ -22,7 +22,6 @@ class KwitansiController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
-        //validate form
         $request->validate([
             'tgl_kwitansi'          => 'required',
         ]);
@@ -30,14 +29,13 @@ class KwitansiController extends Controller
         Kwitansi::create([
             'tgl_kwitansi'          => $request->tgl_kwitansi,
         ]);
-        //redirect to index
         return redirect()->route('kwitansi.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     public function edit($id_kwitansi): View
     {
-        $dataKwitansi = Kwitansi::findOrFail($id_kwitansi);
-        return view('kwitansi.edit', compact('dataKwitansi'));
+        $kwitansi = Kwitansi::findOrFail($id_kwitansi);
+        return view('kwitansi.edit', compact('kwitansi'));
     }
 
     public function show($id_kwitansi): View
