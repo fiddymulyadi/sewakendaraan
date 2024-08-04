@@ -1,4 +1,9 @@
 ## Aplikasi Sewa Kendaraan
+
+New Update:
+- Penambahan Form Login (Login Level Adminsitrator & Admin Transaksi)
+- Penambahan Template (Stisla Theme)
+ 
 <p align="center"><a href="#" target="#"><img src="https://raw.githubusercontent.com/fiddymulyadi/sewakendaraan/main/Screenshot%202024-05-20%20091740.png" width="800" alt="Screenshot 1"></a></p>
 
 <p align="center"><a href="#" target="#"><img src="https://raw.githubusercontent.com/fiddymulyadi/sewakendaraan/main/Screenshot%202024-05-20%20084500.png" width="800" alt="Screenshot 1"></a></p>
