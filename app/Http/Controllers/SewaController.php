@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
+use App\Models\Kendaraan;
+use App\Models\Kwitansi;
 use App\Models\penyewa;
 use App\Models\Sewa;
 use Illuminate\View\View;
@@ -22,7 +25,10 @@ class SewaController extends Controller
     {
 
         $dataPenyewa = Penyewa::all();
-        return view('sewa.create', compact('dataPenyewa'));
+        $kwitansi = Kwitansi::all();
+        $kendaraan = Kendaraan::all();
+        $invoice = Invoice::all();
+        return view('sewa.create', compact('dataPenyewa','kwitansi','kendaraan','invoice'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -37,6 +43,8 @@ class SewaController extends Controller
             'alamat_tujuan' => 'required',
             'biaya_sewa' => 'required',
             'id_penyewa' => 'required',
+            'id_kwitansi' => 'required',
+            'id_invoice' => 'required',
             'kota' => 'required',
             'jlh_penumpang' => 'required',
         ]);
@@ -49,6 +57,8 @@ class SewaController extends Controller
             'alamat_tujuan' => $request->alamat_tujuan,
             'biaya_sewa' => $request->biaya_sewa,
             'id_penyewa' => $request->id_penyewa,
+            'id_kwitansi' => $request->id_kwitansi,
+            'id_invoice' => $request->id_invoice,
             'kota' => $request->kota,
             'jlh_penumpang' => $request->jlh_penumpang,
         ]);
@@ -66,41 +76,44 @@ class SewaController extends Controller
     public function edit(string $id): View
     {
         $sewa = Sewa::findOrFail($id);
-
-        return view('sewa.edit', compact('sewa'));
+        $kwitansi = Kwitansi::all();
+        $dataPenyewa = Penyewa::all();
+        $kendaraan = Kendaraan::all();
+        $invoice = Invoice::all();
+        return view('sewa.edit', compact('sewa','dataPenyewa','kwitansi','kendaraan','invoice'));
     }
 
     public function update(Request $request, $id): RedirectResponse
     {
         //validate form
         $request->validate([
-            'id_sewa' => 'required|min:5',
-            'no_pol' => 'required|min:5',
-            'tgl_sewa' => 'required|min:5',
-            'tgl_selesai' => 'required|min:5',
-            'tlp_tujuan' => 'required|min:5',
-            'alamat_tujuan' => 'required|min:5',
-            'biaya_sewa' => 'required|min:5',
-            'kota' => 'required|min:5',
-            'id_penyewa' => 'required|min:5',
-            'jlh_penumpang' => 'required|min:5',
-            'id_kwitansi' => 'required|min:5'
-
+            'no_pol' => 'required',
+            'tgl_sewa' => 'required',
+            'tgl_selesai' => 'required',
+            'tlp_tujuan' => 'required',
+            'alamat_tujuan' => 'required',
+            'biaya_sewa' => 'required',
+            'id_penyewa' => 'required',
+            'id_kwitansi' => 'required',
+            'id_invoice' => 'required',
+            'kota' => 'required',
+            'jlh_penumpang' => 'required',
         ]);
 
         $sewa = Sewa::findOrFail($id);
         $sewa->update([
-            'id_sewa' => $request->id_sewa,
             'no_pol' => $request->no_pol,
             'tgl_sewa' => $request->tgl_sewa,
             'tgl_selesai' => $request->tgl_selesai,
             'tlp_tujuan' => $request->tlp_tujuan,
+            'alamat_tujuan' => $request->alamat_tujuan,
             'biaya_sewa' => $request->biaya_sewa,
+            'id_penyewa' => $request->id_penyewa,
+            'id_kwitansi' => $request->id_kwitansi,
+            'id_invoice' => $request->id_invoice,
             'kota' => $request->kota,
-            'id_penyewa' =>$request->id_penyewa,
             'jlh_penumpang' => $request->jlh_penumpang,
-            'id_kwitansi' =>$request->id_kwitansi
-            ]);
+        ]);
 
         return redirect()->route('sewa.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
